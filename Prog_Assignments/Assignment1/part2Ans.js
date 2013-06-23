@@ -4,18 +4,18 @@ var outfile = "part2.txt";
 var out = "";
 
 var findPrimes = function(limit) {
-	var sieve = new Array();
-	var i = 2;
-        var j;
-	var num = 0;
-	//Iteratively mark the non primes multiples of each prime starting with 2
-	while (num <= limit) {
-		if (!sieve[i]) {
+	var i = 3, j, k;
+	out +=  "2,";
+	for (j = 2; j <= limit; )
+	{
+		for (k = 2; k <= i - 1; k++) {
+			if (i%k == 0)
+				break;
+		}
+		if (k == i)
+		{
 			out += i + ",";
-			num++;
-			for (j = i << 1; j <= limit; j += i) {
-				sieve[j] = true;
-			}
+			j++;
 		}
 		i++;
 	}
